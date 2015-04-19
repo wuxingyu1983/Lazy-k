@@ -56,7 +56,7 @@ private:
 public:
 	enum Type { A, K, K1, S, S1, S2, I1, LazyRead, Inc, Num, Free } type;
 
-	static void* operator new(unsigned) {
+	static void* operator new(size_t size) {
 		Expr* result = free_list;
 		if (result) {
 			free_list = result->arg1;
